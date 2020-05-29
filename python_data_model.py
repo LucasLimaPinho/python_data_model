@@ -46,3 +46,23 @@ choice (deck)
 deck[:3]
 deck[12::13] #escolher somente os ases iniciando no índice 12 e avançando 13 cartas de cada vez
 
+for card in deck:
+    print(card)
+
+for card in reversed(deck):
+    print(card)
+    
+# Collections in Python are containers that are used to store
+# collections of data, for example, list, dict, set, tuple etc.
+# Cada item de um dicionário em python possui um KVP - Key Value Pair.
+    
+suit_values = dict(spades=3, hearts=2, diamonds=1, clubs=0)
+def spades_high(card):
+    rank_value = FrenchDeck.ranks.index(card.rank)
+    return rank_value * len(suit_values) + suit_values[card.suit]
+
+for card in sorted(deck, key=spades_high):
+    print(card)
+
+# Os métodos especiais foram criados para serem chamados pelo interpretador
+# Python e não por você

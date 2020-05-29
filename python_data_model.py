@@ -65,4 +65,52 @@ for card in sorted(deck, key=spades_high):
     print(card)
 
 # Os métodos especiais foram criados para serem chamados pelo interpretador
-# Python e não por você
+# Python e não por você    
+    
+# Normalmente, seu código não deverá ter muitas chamadas diretas a 
+# métodos especiais (dunder methods), a menos que você esteja usando bastante
+# metaprogramação
+
+# O único méotdo especial chamado frequentemente de forma direta pelo usuário
+# de forma direta pelo usuário é __init__ para provocar o iniciarlizador
+# da superclasse quando você implementa seu próprio __init__
+    
+# A utilização de funções embutidas que invocam o método especial correspondente
+# costumam ser bem mais rápidas do que a utilização de métodos. 
+# evite criar atributos arbitrários personalizados com a sintaxe _foo_,
+# pois esses nomes poderão adquirir significados especiais no futuro,
+# mesmo se não estiverem  em uso atualmente.
+
+# Calculano o valor absoluto de um número complexo e sua soma "Normal"
+from math import hypot
+
+class Vector:
+    def __init__(self, x=0,y=0):
+        self.x = x
+        self.y = y
+    def __repr__(self):
+        return 'Vector(%r, %r)' % (self.x, self.y)
+    def __abs__(self):
+        return hypot(self.x, self.y)
+    def __bool__(self):
+        return bool(abs(self))
+    def __add__(self,other):
+        x= self.x + other.x
+        y= self.y + other.y
+        return Vector(x,y)
+    def __mul__(self,scalar):
+        return Vector(self.x * scalar, self.y * scalar)
+    
+v1 = Vector(2,3)
+v2 = Vector(1,1)
+v3 = v1 + v2
+v4 = abs(v1+v2)
+v1
+v2
+v3
+v4
+
+# O método especial __repr__ é chamado pela função embutida repr para obtermos
+# representação em string do objeto para inspeção.
+# Se __repr__ não for implementado, as instâncias dos verores serão exibidas
+# no console como <Vector object at 0x10e100070>

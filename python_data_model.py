@@ -114,3 +114,16 @@ v4
 # representação em string do objeto para inspeção.
 # Se __repr__ não for implementado, as instâncias dos verores serão exibidas
 # no console como <Vector object at 0x10e100070>
+# bool(x) chama x.__bool__() e utiliza o resultado. Se __bool__ não estiver
+# implementado, Python tentará chamar x.__len__() e, se o resultado for zero,
+# bool retornará False. Caso contratário, bool retornará True.
+
+# temos aproximadamente 83 métodos especiais, 47 dos quais são usados para implementar
+# operadores aritméticos, bit a bit (bitwise) e de comparação
+
+# Imlementando os métodos especiais (dunder methods), seus objetos podem se comportar
+# como os tipos embutidos, possibiitando o estilo expressivo de programação
+# considerado pythônico.
+# Métodos especiais como __repr__ e __str__ são importantes para produzir representações
+# úteis de si mesmo em forma de string para debuffing e logging.
+# Referência: Python in A nutshell, ALex Martelli.
